@@ -7,6 +7,7 @@ import NavBar from "./NavBar";
 import { Route, Switch } from "react-router-dom";
 import Menu from "./FoodMenu";
 import Item from "./FoodItem";
+import NewItemForm from "./NewItemForm";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,6 +24,20 @@ function App() {
     }
     getItems();
   }, []);
+  let addItem = async (newItem) => {
+    let itemFormat = {
+      ...newItem,
+      id: newItem.name.toLowerCase().split('').join('-'),
+      userAdd: true
+    };
+    if (newItem.type === 'snack') {
+      await SnackOrBoozeApi.addSnacks(itemFormat);
+      setSnacks((snacks) => [...snacks, itemFormat]);
+    } else if (newItem.type === 'drink') {
+      await SnackOrBoozeApi.addDrinks(itemFormat);
+      setDrinks((drinks) => [...drinks, itemFormat]);
+    }
+  };
 
   if (isLoading) {
     return <p>Loading &hellip;</p>;
@@ -48,6 +63,9 @@ function App() {
             </Route>
             <Route path="/drinks/:id">
               <Item items={drinks} cantFind="/drinks" />
+            </Route>
+            <Route>
+              <NewItemForm add={addItem} toggleLoading={isLoading}/>
             </Route>
             <Route>
               <p>Hmmm. I can't seem to find what you want.</p>
