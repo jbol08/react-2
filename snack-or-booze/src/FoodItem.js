@@ -1,31 +1,28 @@
 import React from "react";
-import { Redirect, useParams } from "react-router-dom";
+import { Redirect, useParams, Link } from "react-router-dom";
 import { Card, CardBody, CardTitle, CardText } from "reactstrap";
 
-function Item({ items, cantFind }) {
+function Item({ items, cantFind,goTo }) {
   const { id } = useParams();
 
-  let snack = items.find(snack => snack.id === id);
-  if (!snack) return <Redirect to={cantFind} />;
-
-  let drink = items.find(drink => drink.id === id);
-  if(!drink) return <Redirect to={cantFind} />
+  let item = items.find((item) => item.id === id);
+	if (!item) return <Redirect to={cantFind} />;
 
   return (
     <section>
       <Card>
         <CardBody>
           <CardTitle className="font-weight-bold text-center">
-            {snack.name}
-            {drink.name}
+            {item.name}
           </CardTitle>
-          <CardText className="font-italic">{snack.description}</CardText>
+          <CardText className="font-italic">{item.description}</CardText>
           <p>
-            <b>Recipe:</b> {snack.recipe}
+            <b>Recipe:</b> {item.recipe} 
           </p>
           <p>
-            <b>Serve:</b> {snack.serve}
+            <b>Serve:</b> {item.serve} 
           </p>
+          <Link to={`/${goTo.toLowerCase()}`}>All {goTo}</Link>
         </CardBody>
       </Card>
     </section>
