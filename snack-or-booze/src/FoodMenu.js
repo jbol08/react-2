@@ -19,20 +19,20 @@ function Menu({ items,title }) {
             {title} Menu
           </CardTitle>
           <CardText>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            Check out our menu!
           </CardText>
           <ListGroup>
-            {items.map((item) => {
-              return (
-                <div className="Item" key={item.id}>
-                  <Link data-testId={`link-${item.id}`} to={`/${title.toLowerCase()}/${item.id}`}>
-                    <ListGroupItem>{item.name}</ListGroupItem>
-                  </Link>
-                </div>
-                );
-            })}
-          </ListGroup>       
+						{items.map((item) => {
+							return (
+								<div className="Item" key={item.id}>
+									<Link data-testId={`link-${item.id}`} to={`/${title.toLowerCase()}/${item.id}`}>
+										<ListGroupItem>{item.name}</ListGroupItem>
+									</Link>
+									
+								</div>
+							);
+						})}
+					</ListGroup>      
         </CardBody>
       </Card>
     </section>

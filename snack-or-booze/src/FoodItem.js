@@ -15,7 +15,9 @@ function Item({ items, cantFind,goTo }) {
           <CardTitle className="font-weight-bold text-center">
             {item.name}
           </CardTitle>
-          <CardText className="font-italic">{item.description}</CardText>
+          <CardText className="font-italic">
+            {item.description}
+          </CardText>
           <p>
             <b>Recipe:</b> {item.recipe} 
           </p>
