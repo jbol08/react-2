@@ -8,8 +8,7 @@ import {
 	Input,
 	Card,
 	CardBody,
-	CardTitle,
-	CardText
+	
 } from 'reactstrap';
 
 function NewFormItem({ add }) {
@@ -41,9 +40,7 @@ function NewFormItem({ add }) {
     return (
         
         <Card>
-            <CardBody>
-            <CardTitle>Add A New Item</CardTitle>
-            
+            <CardBody>    
            
             <Form onSubmit={handleSubmit}>
                 <FormGroup>
