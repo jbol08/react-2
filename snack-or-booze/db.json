@@ -27,6 +27,24 @@
       "description": "Crisp!",
       "recipe": "Open can.",
       "serve": "Immediately."
+    },
+    {
+      "type": "snack",
+      "name": "red",
+      "description": "red flames",
+      "recipe": "two scoops of red hots",
+      "serve": "on a napkin",
+      "id": "r-e-d",
+      "userAdd": true
+    },
+    {
+      "type": "drink",
+      "name": "flames",
+      "description": "flaming hot fireball",
+      "recipe": "two shots of fireball",
+      "serve": "small glass",
+      "id": "f-l-a-m-e-s",
+      "userAdd": true
     }
   ],
   "snacks": [
