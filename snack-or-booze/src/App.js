@@ -10,21 +10,21 @@ import Item from "./FoodItem";
 import NewItemForm from "./NewItemForm";
 
 function App() {
-  const [ isLoading, setIsLoading ] = useState(true);
-	const [ snacks, setSnacks ] = useState([]);
-	const [ drinks, setDrinks ] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [snacks, setSnacks] = useState([]);
+  const [drinks, setDrinks] = useState([]);
 
-	useEffect(() => {
-		async function getItems() {
-			let snackList = await SnackOrBoozeApi.getSnacks();
-			let drinkList = await SnackOrBoozeApi.getDrinks();
-			setSnacks(snackList);
-			setDrinks(drinkList);
-			setIsLoading(false);
-		}
-		getItems();
+  useEffect(() => {
+    async function getItems() {
+      let snacksList = await SnackOrBoozeApi.getSnacks();
+      let drinksList = await SnackOrBoozeApi.getDrinks();
+      setSnacks(snacksList);
+      setDrinks(drinksList);
+      setIsLoading(false);
+    }
+    getItems();
   }, []);
-  
+
   let addItem = async (newItem) => {
     let itemFormat = {
       ...newItem,
@@ -54,16 +54,16 @@ function App() {
               <Home snacks={snacks} drinks={drinks} />
             </Route>
             <Route exact path="/snacks">
-              <Menu snacks={snacks} title="Snacks" />
+              <Menu items={snacks} title="Snacks" />
             </Route>
-            <Route path="/snacks/:id">
-              <Item items={snacks} cantFind="/snacks" goTo='snacks'/>
+            <Route exact path="/snacks/:id">
+              <Item items={snacks} cantFind="/snacks" goTo='snacks' />
             </Route>
-            <Route path="/drinks">
-              <Item items={drinks} title="Drinks" />
+            <Route exact path="/drinks">
+              <Menu items={drinks} title="Drinks" />
             </Route>
-            <Route path="/drinks/:id">
-              <Item items={drinks} cantFind="/drinks" goTo='drinks'/>
+            <Route exact path="/drinks/:id">
+              <Item items={drinks} cantFind="/drinks" goTo='drinks' />
             </Route>
             <Route exact path="/new">
               <NewItemForm add={addItem} toggleLoading={setIsLoading}/>

@@ -45,6 +45,24 @@
       "serve": "small glass",
       "id": "f-l-a-m-e-s",
       "userAdd": true
+    },
+    {
+      "type": "snack",
+      "name": "red",
+      "description": "hots",
+      "recipe": "red hots",
+      "serve": "on a napkin",
+      "id": "red",
+      "userAdd": true
+    },
+    {
+      "type": "snack",
+      "name": "A",
+      "description": "asdf",
+      "recipe": "asdf",
+      "serve": "asdf",
+      "id": "a",
+      "userAdd": true
     }
   ],
   "snacks": [

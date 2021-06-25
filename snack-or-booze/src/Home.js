@@ -16,11 +16,11 @@ function Home({snacks,drinks}) {
             <h4>
               We have { }
               <Link to='/snacks'>
-              {snacks.legnth} snacks
+              {snacks.length} snacks
               </Link >
               { } and { }
               <Link to='/drinks'>
-              {drinks.length} drinks,
+              {drinks.length} drinks
               </Link>
               { } choose wisely!
             </h4>
