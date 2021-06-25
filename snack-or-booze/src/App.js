@@ -10,31 +10,32 @@ import Item from "./FoodItem";
 import NewItemForm from "./NewItemForm";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [snacks, setSnacks] = useState([]);
-  const [drinks, setDrinks] = useState([]);
+  const [ isLoading, setIsLoading ] = useState(true);
+	const [ snacks, setSnacks ] = useState([]);
+	const [ drinks, setDrinks ] = useState([]);
 
-  useEffect(() => {
-    async function getItems() {
-      let snacksList = await SnackOrBoozeApi.getSnacks();
-      let drinksList = await SnackOrBoozeApi.getDrinks();
-      setSnacks(snacksList);
-      setDrinks(drinksList);
-      setIsLoading(false);
-    }
-    getItems();
+	useEffect(() => {
+		async function getItems() {
+			let snackList = await SnackOrBoozeApi.getSnacks();
+			let drinkList = await SnackOrBoozeApi.getDrinks();
+			setSnacks(snackList);
+			setDrinks(drinkList);
+			setIsLoading(false);
+		}
+		getItems();
   }, []);
+  
   let addItem = async (newItem) => {
     let itemFormat = {
       ...newItem,
-      id: newItem.name.toLowerCase().split('').join('-'),
+      id: newItem.name.toLowerCase().split(' ').join('-'),
       userAdd: true
     };
     if (newItem.type === 'snack') {
-      await SnackOrBoozeApi.addSnacks(itemFormat);
+      await SnackOrBoozeApi.addSnack(itemFormat);
       setSnacks((snacks) => [...snacks, itemFormat]);
     } else if (newItem.type === 'drink') {
-      await SnackOrBoozeApi.addDrinks(itemFormat);
+      await SnackOrBoozeApi.addDrink(itemFormat);
       setDrinks((drinks) => [...drinks, itemFormat]);
     }
   };
@@ -56,16 +57,16 @@ function App() {
               <Menu snacks={snacks} title="Snacks" />
             </Route>
             <Route path="/snacks/:id">
-              <Item items={snacks} cantFind="/snacks" />
+              <Item items={snacks} cantFind="/snacks" goTo='snacks'/>
             </Route>
             <Route path="/drinks">
-              <Item items={drinks} cantFind="/drinks" />
+              <Item items={drinks} title="Drinks" />
             </Route>
             <Route path="/drinks/:id">
-              <Item items={drinks} cantFind="/drinks" />
+              <Item items={drinks} cantFind="/drinks" goTo='drinks'/>
             </Route>
-            <Route>
-              <NewItemForm add={addItem} toggleLoading={isLoading}/>
+            <Route exact path="/new">
+              <NewItemForm add={addItem} toggleLoading={setIsLoading}/>
             </Route>
             <Route>
               <p>Hmmm. I can't seem to find what you want.</p>

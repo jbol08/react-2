@@ -16,9 +16,9 @@ function Home({snacks,drinks}) {
             <h4>
               We have { }
               <Link to='/snacks'>
-              {snacks.legnth} snacks { }
+              {snacks.legnth} snacks
               </Link >
-              and { }
+              { } and { }
               <Link to='/drinks'>
               {drinks.length} drinks,
               </Link>
