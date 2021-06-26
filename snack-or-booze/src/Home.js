@@ -22,7 +22,7 @@ function Home({snacks,drinks}) {
               <Link to='/drinks'>
               {drinks.length} drinks
               </Link>
-              { } choose wisely!
+              { }, choose wisely!
             </h4>
           </CardText>
         </CardBody>
